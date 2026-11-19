@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ammar Abdelfattah | AI Engineer & Systems Architecture</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: #111827;
+            --bg-card-hover: #172136;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header / Nav */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(10, 14, 23, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 12px var(--accent-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 0 90px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 9999px;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-mono);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span.gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            max-width: 720px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 4rem 0 5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .stat-num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Section Header */
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-top: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 60px 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights li {
+            position: relative;
+            padding-left: 1.25rem;
+            color: #cbd5e1;
+            font-size: 0.88rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-highlights li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            font-family: var(--font-mono);
+        }
+
+        .project-links {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: #f1f5f9;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .btn-card:hover {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            transform: translateY(-1px);
+        }
+
+        .btn-card.primary {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+            border-color: rgba(6, 182, 212, 0.4);
+            color: #38bdf8;
+        }
+
+        .btn-card.primary:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.35), rgba(59, 130, 246, 0.35));
+            border-color: var(--accent-cyan);
+            color: #fff;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 80px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.8rem;
+        }
+
+        .skill-group-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        /* Education & Certs */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-period {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.35rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .timeline-sub {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: linear-gradient(180deg, var(--bg-card), rgba(17, 24, 39, 0.7));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3.5rem 2rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .contact-box h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-dot"></span>
+                Ammar.AI
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="presentation.html" target="_blank">Slides Deck</a></li>
+            </ul>
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+                <a href="Ammar_Portfolio_LinkedIn.pdf" target="_blank" class="btn btn-outline" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;">📄 PDF Deck</a>
+                <a href="https://github.com/marbdalftah72-spec" target="_blank" class="btn btn-outline" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;">⚡ GitHub</a>
+                <a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge-pill">
+                <span>⚡</span> AI ENGINEERING STUDENT @ NINU
+            </div>
+            <h1>
+                Hi, I'm Ammar Abdelfattah<br>
+                <span class="gradient-text">Bridging Hardware Architecture & Intelligent AI</span>
+            </h1>
+            <p class="hero-desc">
+                Designing computing systems from fundamental logic gates up to deep neural architectures: from 16-bit CPU datapath & RTL to computer vision, reinforcement learning, and reproducible engineering pipelines.
+            </p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">🚀 Explore Featured Projects</a>
+                <a href="Ammar_Portfolio_LinkedIn.pdf" target="_blank" class="btn btn-outline">📄 Download Portfolio Deck (PDF)</a>
+                <a href="presentation.html" target="_blank" class="btn btn-outline">🖥️ Interactive Slides Deck</a>
+                <a href="https://github.com/marbdalftah72-spec" target="_blank" class="btn btn-outline">⚡ GitHub Profile</a>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-num">16-bit</div>
+                    <div class="stat-label">Hardwired CPU Built From Scratch</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">>99%</div>
+                    <div class="stat-label">AUC on Deep Vision Diagnostics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">10+</div>
+                    <div class="stat-label">Open-Source Engineering Repos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">15+ Hrs</div>
+                    <div class="stat-label">BUE Certified AI Training</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Overview</div>
+                <h2 class="section-title">Engineering Philosophy</h2>
+            </div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; line-height: 1.8; color: #cbd5e1; font-size: 1.05rem;">
+                <p style="margin-bottom: 1.25rem;">
+                    I believe the next leap in computing requires developers who understand <strong>both sides of the machine</strong>: the physical architecture executing low-level micro-operations, and the mathematical algorithms optimizing intelligent decisions.
+                </p>
+                <p style="margin-bottom: 1.25rem;">
+                    As an Artificial Intelligence Engineering student at <strong>New Ismailia National University (NINU)</strong>, I have cultivated hands-on mastery in both domains. Whether designing ALU circuits and instruction decoders for a 16-bit processor, engineering deep convolutional & recurrent neural networks, benchmarking reinforcement learning agents, or writing high-performance enterprise C++ applications, my focus is consistently on <strong>performance, mathematical rigor, and architectural clarity</strong>.
+                </p>
+                <p>
+                    Actively expanding into <strong>Natural Language Processing (NLP)</strong>, <strong>Edge Deep Learning Deployment</strong>, and high-performance embedded systems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Portfolio Showcase</div>
+                <h2 class="section-title">Featured Engineering Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: 16-bit CPU -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Computer Architecture & RTL</div>
+                        <h3 class="project-title">16-bit Hardwired Computer & CPU</h3>
+                        <p class="project-description">
+                            Full simulation and architectural design of a general-purpose 16-bit computer processor built from logic gates up in Logisim Evolution.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Implemented Register Unit (AR, PC, IR, DR, AC, INPR, OUTR) with common bus multiplexing.</li>
+                            <li>Engineered 16-bit ALU micro-operations & processor status flags (E, Z, FGI, FGO).</li>
+                            <li>Hardwired Control Unit supporting Memory & Register reference instructions (LDA, STA, ADD, ISZ, BUN, BSA).</li>
+                            <li>Verified complete Fetch, Decode, and Execution timing cycles (T0–T6).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">Logisim Evolution</span>
+                            <span class="tag">Computer Architecture</span>
+                            <span class="tag">RTL Design</span>
+                            <span class="tag">Digital Logic</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/16bit-Basic-Computer-Hardwired-CPU" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Deep Learning Structural Health Monitoring -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Deep Learning & Computer Vision</div>
+                        <h3 class="project-title">Structural Health Monitoring: Crack Classification</h3>
+                        <p class="project-description">
+                            Comparative deep learning benchmarking for civil infrastructure health monitoring across FFNN, BiLSTM, Custom CNN, and MobileNetV2 (>99% AUC).
+                        </p>
+                        <ul class="project-highlights">
+                            <li>40,000+ concrete patch image pipeline with normalization and augmentation.</li>
+                            <li>Evaluated inductive bias vs recurrent sequence modeling across architectures.</li>
+                            <li>End-to-end PyTorch pipeline with early stopping, ROC-AUC, and confusion metrics.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">MobileNetV2</span>
+                            <span class="tag">BiLSTM</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/Neural-Network" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Advanced ML & RL Suite -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Machine Learning & Reinforcement Learning</div>
+                        <h3 class="project-title">Advanced ML Suite & Reinforcement Learning</h3>
+                        <p class="project-description">
+                            Rigorous suite featuring supervised customer churn benchmarking, tabular FrozenLake Q-learning, and Deep Q-Networks (DQN).
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Multi-model supervised benchmarking (Logistic Regression, Random Forest, SVM).</li>
+                            <li>Tabular Q-learning with epsilon-decay and Bellman optimality validation.</li>
+                            <li>Deep Q-Network (DQN) with experience replay buffer and target network stabilization.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">Scikit-Learn</span>
+                            <span class="tag">Gymnasium</span>
+                            <span class="tag">DQN</span>
+                            <span class="tag">Reinforcement Learning</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/ML-task" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Digital Image Processing Pipeline -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Computer Vision & Signal Processing</div>
+                        <h3 class="project-title">2D FFT & Defect Profiling Pipeline</h3>
+                        <p class="project-description">
+                            Modular 6-stage image processing suite covering Fourier frequency domain filtering, spatial convolution, CLAHE, and morphological defect detection.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>2D Fast Fourier Transform with Ideal, Butterworth, and Gaussian frequency filters.</li>
+                            <li>Spatial edge filtering (Sobel, Prewitt, Laplacian) and adaptive histogram equalization.</li>
+                            <li>Morphological opening/closing for defect segmentation and quantitative geometry metrics.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">2D FFT</span>
+                            <span class="tag">Signal Processing</span>
+                            <span class="tag">SciPy</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/CNN" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: AI Search Algorithms -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Artificial Intelligence & Algorithms</div>
+                        <h3 class="project-title">Intelligent AI Search & Pathfinding</h3>
+                        <p class="project-description">
+                            Implementation and benchmarking of core Artificial Intelligence heuristic search algorithms and state-space decision systems in Python.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Formulated graph state-space representations, transitions, and admissibility rules.</li>
+                            <li>Benchmarked BFS, DFS, UCS, Greedy Best-First, and A* Search algorithms.</li>
+                            <li>Analyzed branching factors, space/time complexity bounds, and heuristic efficiency.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">AI Search</span>
+                            <span class="tag">A* Algorithm</span>
+                            <span class="tag">Heuristics</span>
+                            <span class="tag">Graph Theory</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/AI-Search-Algorithms-Pathfinding" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Statistical Data Analysis -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Data Science & Analytics</div>
+                        <h3 class="project-title">Exploratory Data Analysis & Statistics</h3>
+                        <p class="project-description">
+                            Statistical data analysis and hypothesis testing pipeline for real-world Kaggle datasets using Python's numerical and visualization ecosystem.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Comprehensive data preprocessing, cleaning, and multivariate outlier detection.</li>
+                            <li>Statistical hypothesis testing, variance analysis, and correlation matrices.</li>
+                            <li>Diagnostic statistical storytelling with Seaborn, Matplotlib & Pandas.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">SciPy</span>
+                            <span class="tag">Kaggle</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/Statistical-Data-Analysis-Python" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Enterprise C++ Systems -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Software Engineering & Systems</div>
+                        <h3 class="project-title">Enterprise C++ Management Systems</h3>
+                        <p class="project-description">
+                            Modular supermarket POS and healthcare pharmacy inventory management systems built with high-efficiency C++ architecture.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Strict object-oriented patterns (Inheritance, Polymorphism, Encapsulation).</li>
+                            <li>Engineered custom data structures for instant search, indexed billing, and allergy checks.</li>
+                            <li>Persistent file storage and structured audit trail handling.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">OOP</span>
+                            <span class="tag">Data Structures</span>
+                            <span class="tag">File Handling</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/Supermarket-Management-System-CPP" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                Supermarket POS
+                            </a>
+                            <a href="https://github.com/marbdalftah72-spec/Pharmacy-Management-System-CPP" target="_blank" class="btn-card">
+                                Pharmacy System
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Cisco Networks & Embedded Systems -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Networking & Embedded Hardware</div>
+                        <h3 class="project-title">Enterprise Network & Sensor Gate System</h3>
+                        <p class="project-description">
+                            3-tier hierarchical enterprise network design in Cisco Packet Tracer, coupled with microcontroller analog sensor barrier automation.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Configured OSPFv2, inter-VLAN routing, NAT, EtherChannel, and port security.</li>
+                            <li>Designed Op-Amp dual-sign summing amplifier circuit with CMRR verification.</li>
+                            <li>Automated ultrasonic and PIR sensor barrier gate with servo logic.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">Cisco Packet Tracer</span>
+                            <span class="tag">OSPF / VLAN</span>
+                            <span class="tag">Op-Amps</span>
+                            <span class="tag">Embedded C++</span>
+                            <span class="tag">Sensors</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec/Enterprise-Network-Design-Cisco-Packet-Tracer" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                Network Repo
+                            </a>
+                            <a href="https://github.com/marbdalftah72-spec/Automatic-Sensor-Gate-Embedded-System" target="_blank" class="btn-card">
+                                Sensor Gate Repo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9: SM-2 Algorithmic Engine -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-category">Algorithms & Cryptographic Integrity</div>
+                        <h3 class="project-title">SM-2 Spaced Repetition Engine</h3>
+                        <p class="project-description">
+                            Algorithmic engine implementing SuperMemo-2 (SM-2) adaptive retention, astronomical coordinate calculations, and HMAC cryptographical verification.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Adaptive quality-factor scheduling for optimal long-term memory retention.</li>
+                            <li>Astronomical coordinate transformations and spherical bearing calculations.</li>
+                            <li>Automated integrity guards and encrypted vault services.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags">
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">SM-2</span>
+                            <span class="tag">HMAC Security</span>
+                            <span class="tag">Mathematics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/marbdalftah72-spec" target="_blank" class="btn-card primary">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                Architecture View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Matrix -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Core Competencies</div>
+                <h2 class="section-title">Technical Skills Matrix</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <div class="skill-group-title">💻 Programming</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">Object-Oriented Programming (OOP)</span>
+                        <span class="skill-item">Data Structures</span>
+                        <span class="skill-item">Algorithms & Problem Solving</span>
+                        <span class="skill-item">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">🤖 AI, ML & Deep Learning</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Machine Learning</span>
+                        <span class="skill-item">Deep Learning (PyTorch)</span>
+                        <span class="skill-item">Convolutional Neural Networks (CNN)</span>
+                        <span class="skill-item">Reinforcement Learning (DQN)</span>
+                        <span class="skill-item">Computer Vision (OpenCV)</span>
+                        <span class="skill-item">Scikit-learn</span>
+                        <span class="skill-item">NumPy / Pandas</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">⚙️ Architecture & Hardware</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Computer Architecture</span>
+                        <span class="skill-item">Digital Logic Design</span>
+                        <span class="skill-item">RTL Design</span>
+                        <span class="skill-item">Logisim Evolution</span>
+                        <span class="skill-item">Embedded Systems</span>
+                        <span class="skill-item">Analog Circuits & Op-Amps</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">🌐 Systems & Networks</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Computer Networks</span>
+                        <span class="skill-item">Cisco Packet Tracer (OSPF, VLANs)</span>
+                        <span class="skill-item">Git & GitHub</span>
+                        <span class="skill-item">Linux / Shell Basics</span>
+                        <span class="skill-item">Statistical Hypothesis Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section class="education" id="education">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Academic Background</div>
+                <h2 class="section-title">Education & Credentials</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-card">
+                    <div class="timeline-period">2024 — PRESENT</div>
+                    <h3 class="timeline-title">Bachelor of Engineering in Artificial Intelligence</h3>
+                    <div class="timeline-sub">New Ismailia National University (NINU) • Faculty of Engineering</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Focused on AI Systems, Deep Learning, Machine Learning, Computer Architecture, Digital Hardware Design, Statistics, and Advanced Engineering Mathematics.
+                    </p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">CERTIFIED TRAINING</div>
+                    <h3 class="timeline-title">Applications of Artificial Intelligence Program</h3>
+                    <div class="timeline-sub">The British University in Egypt (BUE) / UIEM</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        15 Training Hours in Applied Artificial Intelligence and Machine Learning techniques.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2>Let's Build Something Great</h2>
+                <p>
+                    Actively open to software engineering internships, research collaborations, and engineering discussions. Feel free to connect!
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:marbdalftah72@gmail.com" class="btn btn-primary">
+                        ✉️ Email: marbdalftah72@gmail.com
+                    </a>
+                    <a href="https://github.com/marbdalftah72-spec" target="_blank" class="btn btn-outline">
+                        ⚡ GitHub Profile
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="btn btn-outline">
+                        💼 LinkedIn
+                    </a>
+                    <a href="tel:01050609899" class="btn btn-outline">
+                        📞 +20 105 060 9899
+                    </a>
+                </div>
+                <div style="margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+                    📍 Faqous, Sharqia, Egypt
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Ammar Abdelfattah. Designed for Professional Portfolio, GitHub Pages & LinkedIn Showcase.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
